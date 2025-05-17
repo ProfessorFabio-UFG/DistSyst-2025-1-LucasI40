@@ -45,17 +45,20 @@ public class Client {
     private Client() {}
 
     public static void main(String[] args) {
-
-        System.out.println("Initiating client");
-        
         String host = (args.length < 1) ? null : args[0];
         try {
             Registry registry = LocateRegistry.getRegistry(host);
-            System.out.println("Registry has been located");
             Hello stub = (Hello) registry.lookup("Hello");
-            System.out.println("Found server");
-            String response = stub.sayHello();
-            System.out.println("response: " + response);
+
+            System.out.println("Mensagem do servidor: " + stub.sayHello());
+
+            int number = 17;
+            System.out.println(number + " é primo? " + stub.isPrime(number));
+  
+            String text = "Hello World";
+            System.out.println("String original: " + text);
+            System.out.println("String invertida: " + stub.reverseString(text));
+
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
             e.printStackTrace();

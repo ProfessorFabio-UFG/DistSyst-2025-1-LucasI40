@@ -42,4 +42,6 @@ import java.rmi.RemoteException;
 
 public interface Hello extends Remote {
     String sayHello() throws RemoteException;
+    boolean isPrime(int number) throws RemoteException;
+    String reverseString(String input) throws RemoteException;
 }
